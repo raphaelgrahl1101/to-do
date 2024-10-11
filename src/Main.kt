@@ -107,7 +107,7 @@ class ToDo() {
             println("No existing exercises.")
         } else {
             list.forEachIndexed {
-                index, task -> println("${index + 1}. ${task.value} [${task.status}]")
+                    index, task -> println("${index + 1}. ${task.value} [${task.status}]")
             }
         }
     }
@@ -127,7 +127,7 @@ class ToDo() {
 
         if(index in list.indices) {
             list[index].status = incompleted
-            println("Set the status of ${list[index].value} to ${list[index].status}")
+            println("Set the status of ${list[index].value} to ${list[index].status}.")
         } else {
             println("The index number $value does not exist.")
         }
