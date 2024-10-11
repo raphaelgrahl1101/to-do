@@ -1,8 +1,50 @@
 
 fun main() {
 
+
     var running = true
     val toDoFunctions = ToDo()
+
+    fun addfunc(value: String?) {
+        if (value != null) {
+            toDoFunctions.add(value)
+        } else {
+            println("You need to add a value.")
+        }
+    }
+    fun removefunc(value: String?) {
+        if (value != null) {
+            val indexValue = value.toIntOrNull()
+
+            if (indexValue != null) {
+                toDoFunctions.remove(indexValue)
+            }
+        } else {
+            println("You need to add a value.")
+        }
+    }
+    fun completefunc(value: String?) {
+        if (value != null) {
+            val indexValue = value.toIntOrNull()
+
+            if (indexValue != null) {
+                toDoFunctions.complete(indexValue)
+            }
+        } else {
+            println("You need to add a value.")
+        }
+    }
+    fun incompletefunc(value: String?) {
+        if (value != null) {
+            val indexValue = value.toIntOrNull()
+
+            if (indexValue != null) {
+                toDoFunctions.incomplete(indexValue)
+            }
+        } else {
+            println("You need to add a value.")
+        }
+    }
 
     while (running){
 
@@ -13,47 +55,19 @@ fun main() {
 
         when (keyword) {
             "add" -> {
-                if (value != null) {
-                    toDoFunctions.add(value)
-                } else {
-                    println("You need to add a value.")
-                }
+                addfunc(value)
             }
             "remove" -> {
-                if (value != null) {
-                    val indexValue = value.toIntOrNull()
-
-                    if (indexValue != null) {
-                        toDoFunctions.remove(indexValue)
-                    }
-                } else {
-                    println("You need to add a value.")
-                }
+                removefunc(value)
             }
             "list" -> {
                 toDoFunctions.list()
             }
             "complete" -> {
-                if (value != null) {
-                    val indexValue = value.toIntOrNull()
-
-                    if (indexValue != null) {
-                        toDoFunctions.complete(indexValue)
-                    }
-                } else {
-                    println("You need to add a value.")
-                }
+                completefunc(value)
             }
             "incomplete" -> {
-                if (value != null) {
-                    val indexValue = value.toIntOrNull()
-
-                    if (indexValue != null) {
-                        toDoFunctions.incomplete(indexValue)
-                    }
-                } else {
-                    println("You need to add a value.")
-                }
+                incompletefunc(value)
             }
             "exit" -> {
                 running = false
@@ -66,36 +80,34 @@ fun main() {
 }
 
 class ToDo() {
-    val list: MutableList<String> = mutableListOf()
-    val completeList: MutableList<String> = mutableListOf()
-    val completed = "completed"
-    val incompleted = "incomplete"
+    private data class Task(val value: String, var status: String)
+
+    private val list: MutableList<Task> = mutableListOf()
+    private val completed = "completed"
+    private val incompleted = "incomplete"
 
     fun add(value: String) {
-        completeList.add(incompleted)
-        list.add(value)
+        list.add(Task(value, incompleted))
         println("Added $value to your list.")
     }
 
     fun remove(value: Int) {
         val index = value - 1
-        if(index in 0 until list.size) {
-            val removedItem = list.removeAt(index)
-            val removedStatus = completeList.removeAt(index)
-            println("Removed $removedItem from your list.")
+        if(index in list.indices) {
+            list.removeAt(index)
+            println("Removed ${list[index].value} from your list.")
+
         } else {
             println("The index number $value does not exist.")
         }
     }
 
     fun list() {
-        var index = 0
         if (list.isEmpty()) {
             println("No existing exercises.")
         } else {
-            for (item in list) {
-                println("${list.indexOf(item) + 1}. $item [${completeList[index]}]")
-                index++
+            list.forEachIndexed {
+                index, task -> println("${index + 1}. ${task.value} [${task.status}]")
             }
         }
     }
@@ -103,9 +115,9 @@ class ToDo() {
     fun complete(value: Int) {
         val index = value - 1
 
-        if(index in 0 until list.size && index in 0 until completeList.size) {
-            completeList[index] = completed
-            println("Set the status of ${list[index]} to ${completeList[index]}")
+        if(index in list.indices) {
+            list[index].status = completed
+            println("Set the status of ${list[index].value} to ${list[index].status}")
         } else {
             println("The index number $value does not exist.")
         }
@@ -113,9 +125,9 @@ class ToDo() {
     fun incomplete(value: Int) {
         val index = value - 1
 
-        if(index in 0 until list.size && index in 0 until completeList.size) {
-            completeList[index] = incompleted
-            println("Set the status of ${list[index]} to ${completeList[index]}")
+        if(index in list.indices) {
+            list[index].status = incompleted
+            println("Set the status of ${list[index].value} to ${list[index].status}")
         } else {
             println("The index number $value does not exist.")
         }
