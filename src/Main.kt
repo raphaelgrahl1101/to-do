@@ -92,11 +92,11 @@ class ToDo() {
     }
 
     fun remove(value: Int) {
-        val index = value - 1
-        if(index in list.indices) {
-            list.removeAt(index)
-            println("Removed ${list[index].value} from your list.")
+        val index = value -1
 
+        if(index in list.indices) {
+            println("Removed ${list[index].value} from your list.")
+            list.removeAt(index)
         } else {
             println("The index number $value does not exist.")
         }
