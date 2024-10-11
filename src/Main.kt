@@ -5,14 +5,14 @@ fun main() {
     var running = true
     val toDoFunctions = ToDo()
 
-    fun addfunc(value: String?) {
+    fun addFunc(value: String?) {
         if (value != null) {
             toDoFunctions.add(value)
         } else {
             println("You need to add a value.")
         }
     }
-    fun removefunc(value: String?) {
+    fun removeFunc(value: String?) {
         if (value != null) {
             val indexValue = value.toIntOrNull()
 
@@ -23,7 +23,7 @@ fun main() {
             println("You need to add a value.")
         }
     }
-    fun completefunc(value: String?) {
+    fun completeFunc(value: String?) {
         if (value != null) {
             val indexValue = value.toIntOrNull()
 
@@ -34,7 +34,7 @@ fun main() {
             println("You need to add a value.")
         }
     }
-    fun incompletefunc(value: String?) {
+    fun incompleteFunc(value: String?) {
         if (value != null) {
             val indexValue = value.toIntOrNull()
 
@@ -49,25 +49,25 @@ fun main() {
     while (running){
 
         val input = readLine() ?: ""
-        val splittedInput = input.split(" ", limit = 2)
-        val keyword = splittedInput.getOrNull(0)
-        val value = splittedInput.getOrNull(1)
+        val splitInput = input.split(" ", limit = 2)
+        val keyword = splitInput.getOrNull(0)
+        val value = splitInput.getOrNull(1)
 
         when (keyword) {
             "add" -> {
-                addfunc(value)
+                addFunc(value)
             }
             "remove" -> {
-                removefunc(value)
+                removeFunc(value)
             }
             "list" -> {
                 toDoFunctions.list()
             }
             "complete" -> {
-                completefunc(value)
+                completeFunc(value)
             }
             "incomplete" -> {
-                incompletefunc(value)
+                incompleteFunc(value)
             }
             "exit" -> {
                 running = false
@@ -84,10 +84,10 @@ class ToDo() {
 
     private val list: MutableList<Task> = mutableListOf()
     private val completed = "completed"
-    private val incompleted = "incomplete"
+    private val incomplete = "incomplete"
 
     fun add(value: String) {
-        list.add(Task(value, incompleted))
+        list.add(Task(value, incomplete))
         println("Added $value to your list.")
     }
 
@@ -126,7 +126,7 @@ class ToDo() {
         val index = value - 1
 
         if(index in list.indices) {
-            list[index].status = incompleted
+            list[index].status = incomplete
             println("Set the status of ${list[index].value} to ${list[index].status}.")
         } else {
             println("The index number $value does not exist.")
