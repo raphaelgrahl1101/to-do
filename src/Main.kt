@@ -73,7 +73,7 @@ fun main() {
                 running = false
             } else -> {
             println("This is no valid command.")
-        }
+            }
         }
     }
 
@@ -96,7 +96,6 @@ class ToDo() {
         if(index in list.indices) {
             list.removeAt(index)
             println("Removed ${list[index].value} from your list.")
-
         } else {
             println("The index number $value does not exist.")
         }
