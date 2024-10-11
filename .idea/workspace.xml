@@ -14,7 +14,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ready" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -37,7 +43,7 @@
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -55,6 +61,16 @@
       <option name="presentableId" value="Default" />
       <updated>1728475324780</updated>
       <workItem from="1728475325736" duration="665000" />
+      <workItem from="1728477666138" duration="905000" />
+      <workItem from="1728478933306" duration="5000" />
+      <workItem from="1728478946615" duration="17000" />
+      <workItem from="1728478982598" duration="5000" />
+      <workItem from="1728479003871" duration="3000" />
+      <workItem from="1728480202007" duration="2088000" />
+      <workItem from="1728483490385" duration="671000" />
+      <workItem from="1728556939826" duration="9000" />
+      <workItem from="1728569508952" duration="2763000" />
+      <workItem from="1728627489236" duration="2628000" />
     </task>
     <task id="LOCAL-00001" summary="feedback">
       <option name="closed" value="true" />
